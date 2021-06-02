@@ -10,7 +10,7 @@ When it comes to APIs, there are some keywords that you should understand:
 - [XML](https://en.wikipedia.org/wiki/XML) (old)
 - [JSON](https://en.wikipedia.org/wiki/JSON) (current)
 
-The first three keywords refer to a **protocol** on top of HTTP(s) and it is really important to figure out which protocol you are using when you want to **consume** data from an API.
+The first three keywords refer to an architecture or a protocol on top of HTTP(s) and it is really important to figure out which one you are using when you want to **consume** data from an API.
 
 The last two keywords refer to a **data format** that would usually be sent back to you when performing an API call.
 
