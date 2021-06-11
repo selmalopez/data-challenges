@@ -144,6 +144,7 @@ A few common configurations:
 
 Continue with the configuration:
 - Enter the *Timezone* for the job
+- Click on *CONTINUE*
 - Select the target *HTTP*
 - Enter the *URL* of the **Cloud Function** you just built (similar to https://europe-west1-le-wagon-data.cloudfunctions.net/test)
 
@@ -156,6 +157,8 @@ If you do not know which URL to use:
 - Optionally select the *HTTP method* with which to call your function and add *headers*
 - Select for *Auth header* the *Add OIDC token* option
 - Enter the name of a service account having access to your **Cloud Function** (similar to le-wagon-data@le-wagon-data.iam.gserviceaccount.com)
+- Click on *CONTINUE*
+- Click on *CREATE*
 
 If you do not know which service account to use:
 - Go to [Cloud Functions](https://console.cloud.google.com/functions)
@@ -163,9 +166,11 @@ If you do not know which service account to use:
 - Click on *PERMISSIONS*
 - Have a look at the list of *Member* service accounts and their *Role*
 
-🚨 Do not forget to **Delete** or **Pause** the **Cloud Scheduler** if you do not intend on actively using the linked **Cloud Function**
+You have created a Cloud Scheduler that will trigger your function periodically 🎉
 
 👉 You may manually run the scheduler using *RUN NOW* or wait for the **Cloud Function** to be triggerred by the **Cloud Scheduler** in order to verify that everything works correctly
+
+🚨 Do not forget to **Delete** or **Pause** the **Cloud Scheduler** if you do not intend on actively using the linked **Cloud Function** 💸
 
 The *View* link allows you to have a look at the logs of the **Cloud Scheduler** in order to verify when the **Cloud Function** was triggered and if everything ran correctly.
 
@@ -177,10 +182,22 @@ Another option is to go the jedi way with the CLI 🧙‍♀️
 
 👉 Have a look at the content of the `Makefile` and edit the variables
 
-Then:
+Then, create a Cloud Function from your code (fill `main.py` and `requirements.txt`):
 
 ``` bash
 make deploy_function
 ```
 
 👉 Your *Entry Point* should be located in a file called `main.py` for **Cloud Functions** to find it
+
+And schedule a reccurent trigger:
+
+``` bash
+make deploy_trigger
+```
+
+Then pause it if you do not use it:
+
+``` bash
+make pause_trigger
+```
