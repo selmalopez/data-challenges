@@ -55,27 +55,28 @@ You may configure additional options for your runtime:
 - You may fill *Runtime environment variables* required by your code in order to execute (those may contain credentials to third party providers for example)
 - Press *NEXT*
 
-## Code the function
+## Configure the Cloud Function
 
 Let's select a *Runtime* for our function:
 - *Python 3.9* seems to be a good option
-- You can keep or select a new *Entry point* (the main function that will be called when the **Cloud Function** is triggered)
 
 👉 The *runtime* defines the [language interpreter](https://en.wikipedia.org/wiki/Interpreter_(computing)) (and its version) used in order to run your code
+
+You can keep the existing *Entry point* or use a different name. The *Entry point* is the name of the main function that will be called when the **Cloud Function** is triggered.
 
 As you see in the *docstring* of the default function created for you, the *Entry point* called when the **Cloud Function** is triggered will receive as parameters a [Flask request](https://flask.palletsprojects.com/en/2.0.x/api/#flask.Request) object. **Flask** is a python web microframework allowing to create websites and API.
 
 👉 The content of the *Flask request* allows the function to adapt its behavior to the parameters passed by the called. We will not need to use this at the moment
 
-We will need at least 2 files:
+We will now be editing the content of the 2 files generated for the Cloud Function:
+- `main.py` will contain the *Entry point* of the **Cloud Function** as well as all the code required to run the function
 - `requirements.txt` will contain the list of packages required for our code to run
-- `main.py` will contain the *Entry point* of the **Cloud Function** as well as all the code required to run the function (you may decide to split the code in several files if order to organize it)
 
 ## Daily scraper
 
 Using the `requests` and `beautifulsoup4` packages, create a *function* that retrieves the top 3 news of the day on [Hacker News](https://news.ycombinator.com/).
 
-The function, which will be called by the *Entry point* of the **Cloud Function** will not require any parameters and will return the current time and a list of results (or an empty list if an error occurs).
+The function, which will be called by the *Entry point* of the **Cloud Function** will not require any parameters and will return a list of results (or an empty list if an error occurs).
 
 ``` python
 def top_3_from_hackernews():
@@ -85,13 +86,44 @@ def top_3_from_hackernews():
     pass
 ```
 
-Use an `ifmain` block in order to test that your code runs correctly on your machine before editing your cloud function.
+Use an `ifmain` block in order to test that your code runs correctly on your machine before editing your Cloud Function.
 
-Once your code works on your machine, copy it to your **Cloud Function** (select a file in the interface and edit the content).
+Once your code works on your machine, copy it to your **Cloud Function** (select `main.py` in the interface and edit the content).
 
-Once you are done editing the code of your function, press *DEPLOY* 🚀
+🚨 Do not forget to fill `requirements.txt` with the list of required packages:
+
+``` bash
+requests
+bs4
+google-cloud-storage
+```
+
+When you are done editing the code of your function, press *DEPLOY* 🚀
 
 👉 Your function can now be called from anyone with the proper permissions
+
+## Test the Cloud Function
+
+Once the Cloud Function is deployed, go to [Cloud Functions](https://console.cloud.google.com/functions):
+- Select your function
+- Click on *TESTING*
+- Click on *(...) TEST THE FUNCTION*
+
+👉 You should see the json response of your Cloud Function returned by the entry point
+
+``` bash
+{"response": "the Cloud Function json response, if any"}
+```
+
+The json response returned by the Cloud Function allows the caller of the Cloud Function to know whether everything ran correctly.
+
+👉 In the logs bellow, you should see the output of the print of your code
+
+``` bash
+it works!
+```
+
+The print output visible in the logs allows to give context if an error occurs in the code during the process of the Cloud Function.
 
 ## Create a Cloud Scheduler
 
@@ -138,3 +170,17 @@ If you do not know which service account to use:
 The *View* link allows you to have a look at the logs of the **Cloud Scheduler** in order to verify when the **Cloud Function** was triggered and if everything ran correctly.
 
 👉 You may also want to have a look at the logs of the **Cloud Function** in order to verify that the code runs smoothly
+
+## Command line interface
+
+Another option is to go the jedi way with the CLI 🧙‍♀️
+
+👉 Have a look at the content of the `Makefile` and edit the variables
+
+Then:
+
+``` bash
+make deploy_function
+```
+
+👉 Your *Entry Point* should be located in a file called `main.py` for **Cloud Functions** to find it

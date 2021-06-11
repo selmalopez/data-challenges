@@ -18,11 +18,11 @@ def storage_upload(request):
 
     pass  # YOUR CODE HERE
 
-    # logs
+    # all printed output will be visible in the Cloud Function logs
     print("it works!")
 
-    # response
-    return "good"
+    # the returned json response
+    return {"response": "the Cloud Function json response, if any"}
 
 
 def top_3_from_hackernews():
@@ -35,5 +35,5 @@ def top_3_from_hackernews():
 
 if __name__ == '__main__':
 
-    now, res = top_3_from_hackernews()
-    print(now, res)
+    res = top_3_from_hackernews()
+    print(res)
