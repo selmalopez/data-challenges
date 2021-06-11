@@ -1,9 +1,40 @@
 
-Setup a production workflow using Cloud Schedule and Cloud Functions
+## Objective
 
-## Create a project
+Setup a recurring production job using **Cloud Schedule** and **Cloud Functions**.
 
-TODO
+**Cloud Schedule** will regularly trigger the execution of the job.
+
+**Cloud Functions** will run the job.
+
+## Context
+
+The goal of this challenge is to create a daily scraping job that:
+- retrieves the top 3 stories from [Hacker News](https://news.ycombinator.com/)
+- stores them in a **Cloud Storage** bucket
+
+This demonstrates a simple recurring production job.
+
+## Project
+
+We will create a simple project in order to store the code executed by **Cloud Functions**.
+
+### Project setup
+
+First, let's copy the code of the **Cloud Functions** challenge in your *projects directory*: `~/code/<user.github_nickname>`.
+
+``` bash
+cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Iteration/08-Cloud-Functions/CloudFunctionCode ~/code/<user.github_nickname>/CloudFunctionCode
+```
+
+Then, we will create a local git repository for the project:
+
+``` bash
+cd ~/code/<user.github_nickname>/CloudFunctionCode
+git init
+```
+
+👉 It is now up to you to handle the git lifecycle of the project
 
 ## Create a Cloud Function
 
