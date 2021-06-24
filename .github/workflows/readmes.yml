@@ -14,6 +14,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      - name: Install requirements
+        run: |
+          pip install -U pip
+          pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/utils.git#subdirectory=readmes_checker
       - name: Run Readmes Checker
         run: |
-          python -m checks.check_readmes
+          python -m readmes_checker.check .
