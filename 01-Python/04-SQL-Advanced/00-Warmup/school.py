@@ -2,7 +2,7 @@
 
 def students_from_city(db, city):
     """return a list of students from a specific city"""
-    pass
+    pass  # YOUR CODE HERE
 
 
 # To test your code, you can **run it** before running `make`
