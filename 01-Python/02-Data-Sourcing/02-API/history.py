@@ -7,16 +7,15 @@ from weather import search_city
 
 
 def daily_forecast(woeid, year, month, day):
-    pass
-
+    pass  # YOUR CODE HERE
 
 def monthly_forecast(woeid, year, month):
-    pass # TODO: return a `list` of forecasts for the whole month
-
+    """ return a `list` of forecasts for the whole month """
+    pass  # YOUR CODE HERE
 
 def write_csv(woeid, year, month, city, forecasts):
-    pass # TODO: dump all the forecasts to a CSV file in the `data` folder
-
+    """ dump all the forecasts to a CSV file in the `data` folder """
+    pass  # YOUR CODE HERE
 
 def main():
     if len(sys.argv) > 2:
@@ -25,8 +24,15 @@ def main():
             woeid = city['woeid']
             year = int(sys.argv[2])
             month = int(sys.argv[3])
-            forecasts = monthly_forecast(woeid, year, month)
-            write_csv(woeid, year, month, city['title'], forecasts)
+            if 1 <= month <= 12:
+                forecasts = monthly_forecast(woeid, year, month)
+                if not forecasts:
+                    print("Sorry, could not fetch any forecast")
+                else:
+                    write_csv(woeid, year, month, city['title'], forecasts)
+            else:
+                print("MONTH must be a number between 1 (Jan) and 12 (Dec)")
+                sys.exit(1)
     else:
         print("Usage: python history.py CITY YEAR MONTH")
         sys.exit(1)

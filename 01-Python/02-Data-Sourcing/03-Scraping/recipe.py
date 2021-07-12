@@ -4,23 +4,23 @@ from os import path
 
 
 def parse(html):
-    pass # TODO: return a list of dict {name, difficulty, prep_time}
-
+    ''' return a list of dict {name, difficulty, prep_time} '''
+    pass  # YOUR CODE HERE
 
 def write_csv(ingredient, recipes):
-    pass # TODO: dump recipes to a CSV file `recipes/INGREDIENT.csv`
+    ''' dump recipes to a CSV file `recipes/INGREDIENT.csv` '''
+    pass  # YOUR CODE HERE
 
-
-def scrape_from_internet(ingredient, start=0):
-    pass # TODO: Use `requests` to get the HTML page of search results for given ingredients.
-
+def scrape_from_internet(ingredient, start=1):
+    ''' Use `requests` to get the HTML page of search results for given ingredients. '''
+    pass  # YOUR CODE HERE
 
 def scrape_from_file(ingredient):
     file = f"pages/{ingredient}.html"
     if path.exists(file):
         return open(file)
     print("Please, run the following command first:")
-    print(f'  curl "https://recipes.lewagon.com/?search[query]={ingredient}" > pages/{ingredient}.html')
+    print(f'curl "https://recipes.lewagon.com/?search[query]={ingredient}" > pages/{ingredient}.html')
     sys.exit(1)
 
 
@@ -30,6 +30,7 @@ def main():
         # TODO: Replace scrape_from_file with scrape_from_internet and implement pagination (more than 2 pages needed)
         recipes = parse(scrape_from_file(ingredient))
         write_csv(ingredient, recipes)
+        pass  # YOUR CODE HERE
     else:
         print('Usage: python recipe.py INGREDIENT')
         sys.exit(0)
