@@ -14,7 +14,7 @@ This module is dedicated to the preprocessing of your dataset - how to have a cl
 
 You will realise that the quality of your preprocessing will affect the performance of your models, and that its importance should not be underestimated. 
 
-We'll also show you how to enrich your dataset via feature engineering, and how to evaluate the contribution of individual features to the performance of a model as a way to get rid of "noise".
+We'll also show you how to enrich your dataset via feature engineering, and how to evaluate the contribution of individual features to the performance of a model as a way to get rid of the "noise".
 
 ## Performance metrics
 
