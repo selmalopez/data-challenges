@@ -64,7 +64,7 @@ Let's dive into the other dimension of ML, Unsupervised learning. We will cover 
 
 We’ll see the Principal Component Analysis (PCA), a powerful dimensionality reduction tool which will help you to deal with very large datasets.
 
-We will then dive into the K-means algorithm, a clustering methods used to discover coherant sub-groups within a dataset without supervision.
+We will then dive into the K-means algorithm, a clustering methods used to discover coherent sub-groups within a dataset without supervision.
 
 This day is also an opportunity to discover big machine learning applications through building a recommender system and an image compression program.
 
