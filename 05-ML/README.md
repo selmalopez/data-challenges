@@ -27,7 +27,7 @@ Finally, we'll introduce you to your first distance based algorithm, the K-neare
 
 ## Under the hood
 
-Now that we have covered the fundamentals of  Machine learning, let's get a bit more technical. This module is dedicated to the understanding of the learning mechanism of algorithms, which consists of a Solver minimizing a Loss function.
+Now that we have covered the fundamentals of  Machine learning, let's get a bit more theoretical. This module is dedicated to the understanding of the learning mechanism of algorithms, which consists of a Solver minimizing a Loss function.
 
 We will cover the famous Gradient Descent - an iterative optimisation solver - in depth, and will introduce other types of solvers. We will then dive into the different Loss functions, their specificities, and how they influence the learning process of algorithms.
 
