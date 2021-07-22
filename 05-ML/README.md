@@ -55,7 +55,7 @@ Today, we get the final family of supervised learning models: ensemble methods. 
 
 We will start by introducing the Decision Tree, a simple ML algorithm, and will show you how it can be enhanced by Bagging and Boosting.
 
-You will also be introduced the the famous Gradient Boosting algorithm, one of the most powerful models out there, often winning Kaggle-type competitions.
+You will also get to know the famous Gradient Boosting algorithm, one of the most powerful models out there, often winning Kaggle-type competitions.
 
 
 ## Unsupervised learning
