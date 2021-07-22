@@ -18,7 +18,7 @@ We'll also show you how to enrich your dataset via feature engineering, and how 
 
 ## Performance metrics
 
-This module is split into two sections, Regression metrics and Classification metrics, which are different by nature. We will see here how to evaluate the performance of our models precisely, and how to manage to choose the error metric appropriate to the task.
+This module is split into two sections, Regression metrics and Classification metrics, which are different by nature. We will see here how to evaluate the performance of our models precisely, and how to choose the error metric appropriate to the task.
 
 In an applied setting, knowing what to optimise is actually paramount to cover correctly business use case and evaluate feasibility and utility of the use of machine learning technologies. Metrics like precision, recall & f1 score, are very important to use in order to determine business impact.
 
