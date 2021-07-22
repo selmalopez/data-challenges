@@ -82,7 +82,7 @@ This day is dedicated to one of the most common types of data out there: text.
 
 The first part of the lecture is dedicated to text preprocessing and representation techniques. Text is different by nature to numerical data, and needs to be preprocessed and represented in a specific way in order for algorithms to be able to interpret it.
 
-You will discover to NLTK, a popular NLP library with powerful tools that facilitate the crunching of text data.
+You will discover the NLTK, a popular NLP library with powerful tools that facilitate the crunching of text data.
 
 We will then break down the Naive Bayes algorithm, a probablistic model that has proved succesful for text classification tasks such as authorship attribution.
 
