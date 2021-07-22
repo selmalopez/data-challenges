@@ -10,7 +10,7 @@ Following those fundamental guidelines and techniques, you will train your first
 
 ## Data Preparation
 
-This module is dedicated to the preprocessing of your dataset -  how to have a clean, balanced dataset that is representative of your problem. You’ll discover how to deal with missing values, scale your features, and encode your data into vectorized forms that can be used later in your models.
+This module is dedicated to the preprocessing of your dataset - how to have a clean, balanced dataset that is representative of your problem. You will discover how to deal with missing values, scale your features and encode your data into vectorized forms that can be used later in your models.
 
 You will realise that the quality of your preprocessing will affect the performance of your models, and that its importance should not be underestimated. 
 
