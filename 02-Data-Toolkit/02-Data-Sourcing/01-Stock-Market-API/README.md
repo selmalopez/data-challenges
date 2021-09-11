@@ -25,8 +25,8 @@ As Le Wagon, we kindly provide you with a **proxy** to that API for you to use _
 Here's how it works:
 
 1. API would say: use `https://cloud.iexapis.com/stable/stock/aapl/stats?token=...`
-1. Copy this URL, and replace `https://cloud.iexapis.com` with `http://iex.lewagon.com`
-1. You can [try it now](http://iex.lewagon.com/stable/stock/tsla/chart/1d)
+1. Copy this URL, and replace `cloud.iexapis.com` with `iex.lewagon.com`
+1. You can [try it now](https://iex.lewagon.com/stable/stock/tsla/chart/1d)
 
 ### Using the API
 
@@ -81,7 +81,7 @@ You can find this information here in the documentation:
 <br>
 The URL is:
 <pre>
-http://iex.lewagon.com/stable/stock/aapl/chart/3m
+https://iex.lewagon.com/stable/stock/aapl/chart/3m
 </pre>
 </details>
 
@@ -214,11 +214,11 @@ Let's find out what kind of data we can get from this API 🕵️‍♂️
 <details><summary markdown='span'>All Solutions
 </summary>
 <ol>
-    <li><code>http://iex.lewagon.com/stable/stock/amzn/chart/1y</code></li>
-    <li><code>http://iex.lewagon.com/stable/stock/fb/stats</code></li>
-    <li><code>http://iex.lewagon.com/stable/stock/aapl/financials</code></li>
-    <li><code>http://iex.lewagon.com/stable/stock/tsla/news/last/1</code></li>
-    <li><code>http://iex.lewagon.com/stable/stock/market/sector-performance</code></li>
+    <li><code>https://iex.lewagon.com/stable/stock/amzn/chart/1y</code></li>
+    <li><code>https://iex.lewagon.com/stable/stock/fb/stats</code></li>
+    <li><code>https://iex.lewagon.com/stable/stock/aapl/financials</code></li>
+    <li><code>https://iex.lewagon.com/stable/stock/tsla/news/last/1</code></li>
+    <li><code>https://iex.lewagon.com/stable/stock/market/sector-performance</code></li>
 </ol>
 </details>
 
