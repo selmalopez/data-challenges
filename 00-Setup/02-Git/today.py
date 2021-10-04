@@ -1,6 +1,6 @@
-"""A module computing buddy pair names for the day"""
-
-
+'''
+This is the module docstring
+'''
 def my_name_is():
     input('what is your name? ')
     print(input)
