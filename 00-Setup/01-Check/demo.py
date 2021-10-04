@@ -6,8 +6,8 @@ def circle_area(radius):
     try:
         return pi * (radius * radius)
 
-    except radius < 0:
-        raise Exception("Sorry, no numbers below zero")
+    except ValueError:
+        print('invalid code')
         # handle ValueError exception
     pass
     # handle ValueError exception
