@@ -1,7 +1,8 @@
-'''
-This is the module docstring
-'''
+"""A module computing buddy pair names for the day"""
+
+
 def my_name_is():
-    input('what is your name? ')
-    print(input)
-pass  # YOUR CODE HERE
+    return "selma"
+
+def my_buddy_is():
+    return "Louise"
