@@ -3,5 +3,12 @@ from math import pi
 
 
 def circle_area(radius):
-    return pi * radius^2
-    pass  # YOUR CODE HERE
+    try:
+        return pi * (radius * radius)
+
+    except radius < 0:
+        raise Exception("Sorry, no numbers below zero")
+        # handle ValueError exception
+    pass
+    # handle ValueError exception
+# YOUR CODE HERE
