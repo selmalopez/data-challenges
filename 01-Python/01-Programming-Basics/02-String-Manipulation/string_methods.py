@@ -26,7 +26,7 @@ def count_repetition(a_string, a_substring):
     example: count_repetition("000123000123", "0") => 6
     """
     # YOUR CODE HERE
-    return a_substring.count in a_string
+    return a_string.count(a_substring)
 
 def is_a_question(a_string):
     """
@@ -59,7 +59,7 @@ def full_description_concatenation(first_name, last_name, age):
      the age using concatenation
     example: full_description_concatenation("john", "doe", 33) => "John Doe is 33"
     """
-    return {first_name.capitalize} + " " + {last_name.capitalize}+" "+ 'is' + str(age)
+    return first_name.capitalize() +" "+ last_name.capitalize() +" "+ "is" +" "+ str(age)
     # YOUR CODE HERE
 
 def full_description_formatting(first_name, last_name, age):
