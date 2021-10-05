@@ -1,5 +1,5 @@
 # pylint: disable=missing-module-docstring,missing-function-docstring,eval-used
-from sys import *
+import sys
 
 def main():
     """Implement the calculator"""
