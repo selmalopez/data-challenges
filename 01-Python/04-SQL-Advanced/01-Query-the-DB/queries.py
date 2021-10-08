@@ -33,13 +33,13 @@ def get_orders_range(db, date_from, date_to):
 
 def get_waiting_time(db):
 
-    get_waiting_time = """
+    query_get_waiting_time = """
     SELECT *,
     (julianday(orders.ShippedDate) - julianday(orders.OrderDate)) AS waitingtime
     FROM Orders
     ORDER BY waitingtime ASC
     """
-    results = db.execute(get_waiting_time)
+    results = db.execute(query_get_waiting_time)
     results = results.fetchall()
     return results
 
