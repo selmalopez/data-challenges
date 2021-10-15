@@ -74,13 +74,23 @@ class Product:
                                          'product_id']].drop_duplicates()
         df = matching_table.merge(orders_reviews,
                                   on='order_id')
+
+        df['cost_of_reviews'] = df.review_score.map({
+            1: 100,
+            2: 50,
+            3: 40,
+            4: 0,
+            5: 0
+        })
+
         df = df.groupby('product_id',
                         as_index=False).agg({'dim_is_one_star': 'mean',
                                              'dim_is_five_star': 'mean',
                                              'review_score': 'mean',
+                                             'cost_of_reviews': 'sum'
                                              })
         df.columns = ['product_id', 'share_of_one_stars',
-                      'share_of_five_stars', 'review_score']
+                      'share_of_five_stars', 'review_score', 'cost_of_reviews']
 
         return df
 
@@ -103,10 +113,12 @@ class Product:
 
         return n_orders.merge(quantity, on='product_id')
 
+
+
     def get_sales(self):
         """
         Returns a DataFrame with:
-        'product_id', 'sales'
+        'seller_id', 'sales'
         """
         return self.data['order_items'][['product_id', 'price']]\
             .groupby('product_id')\
@@ -129,7 +141,12 @@ class Product:
                 self.get_sales(), on='product_id'
                )
 
+        # compute the economics (revenues, profits)
+        olist_sales_cut = 0.1
+        training_set['revenues'] = olist_sales_cut * training_set['sales']
+        training_set['profits'] = training_set['revenues'] - training_set['cost_of_reviews']
         return training_set
+
 
     def get_product_cat(self, agg="median"):
         '''

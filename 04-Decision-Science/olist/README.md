@@ -2,7 +2,7 @@
 
 This folder contains Olist Classes that handle the logic of data cleaning for our project.
 
-Example to return data as a Python dictionnary using the `get_data` method from the `Olist` class:
+For example, the below returns data as a Python dictionary using the `get_data` method from the `Olist` class:
 
 ```python
 from olist.data import Olist
@@ -21,7 +21,7 @@ from olist.data import Olist
 Methods:
 
 - `get_data`: returns all Olist datasets as DataFrames within a Python dict.
-- `get_matching_table`: returns the DataFrame `customer_id`, `customer_unique_id`, `order_id`, `seller_id`.
+- `get_matching_table`: returns a DataFrame with: `customer_id`, `customer_unique_id`, `order_id`, `seller_id`.
 
 ### Order
 
@@ -77,14 +77,14 @@ Import:
 from olist.seller import Seller
 ```
 - `get_seller_features`: returns a DataFrame with: `'seller_id', 'seller_city', 'seller_state'`.
-- `get_seller_delay_wait_time`: returns a DataFrame with: `'seller_id', 'delay_to_carrier', 'seller_wait_time'`.
+- `get_seller_delay_wait_time`: returns a DataFrame with: `'seller_id', 'delay_to_carrier', 'wait_time'`.
 - `get_review_score`: returns a DataFrame with: `'seller_id', 'share_of_five_stars', 'share_of_one_stars', 'review_score'`.
 - `get_quantity`: returns a DataFrame with: `'seller_id', 'n_orders', 'quantity'`.
-- `get_training_data`: returns a DataFrame with: `seller_id, seller_state, seller_city, delay_to_carrier, seller_wait_time, share_of_five_stars, share_of_one_stars, seller_review_score, n_orders`.
+- `get_training_data`: returns a DataFrame with: `seller_id, seller_state, seller_city, delay_to_carrier, wait_time, share_of_five_stars, share_of_one_stars, seller_review_score, n_orders`.
 
 ### Utils
 
-Utils functions for Olist project.
+Utility functions to help during the project.
 
 Import:
 
@@ -92,8 +92,8 @@ Import:
 from olist.utils import *
 ```
 
-- `haversine_distance(lat1, lng1, lat2, lng2)`: compute distance (in km) between two pairs of (lat, lng)
+- `haversine_distance(lat1, lng1, lat2, lng2)`: computes distance (in km) between two pairs of (lat, lng)
   See - (https://en.wikipedia.org/wiki/Haversine_formula)
-- `text_scatterplot(df, x, y)`: for a Dataframe `df`, create a scatterplot with `x` and `y` as axis. The index of `df` is the text label.
+- `text_scatterplot(df, x, y)`: for a Dataframe `df`, creates a scatterplot with `x` and `y`. The index of `df` is the text label.
 - `return_significative_coef(model)`: from a `model` as a statsmodels object, returns significant coefficients.
-- `plot_kde_plot(df, variable, dimension)`: plot a side by side kdeplot from DataFrame `df` for `variable`, split by `dimension`.
+- `plot_kde_plot(df, variable, dimension)`: plots a side by side kdeplot from DataFrame `df` for `variable`, split by `dimension`.
