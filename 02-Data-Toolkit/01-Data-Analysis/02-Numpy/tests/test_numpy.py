@@ -22,6 +22,6 @@ class TestNumpy(ChallengeResultTestCase):
 
     def test_advanced_matrixes_manipulation(self):
         self.assertEqual(self.result.reshaped_G.shape, (4, 1))
-        G = np.array([0, 4, -4, -3, 1, 1]).reshape(3, 2)
-        H = np.array([[0, 1], [1, -1], [2, 3]])
-        assert np.array_equal(self.result.gh_sum, G + H)
+        H = np.array([0, 4, -4, -3, 1, 1]).reshape(3, 2)
+        I = np.array([[0, 1], [1, -1], [2, 3]])
+        assert np.array_equal(self.result.hi_sum, H + I)
