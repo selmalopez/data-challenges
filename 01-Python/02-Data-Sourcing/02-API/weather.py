@@ -4,6 +4,12 @@ import sys
 import urllib.parse
 import requests
 
+# pylint: disable=missing-module-docstring
+
+import sys
+#import urllib.parse
+import requests
+
 BASE_URI = "https://www.metaweather.com"
 
 
@@ -12,9 +18,9 @@ def search_city(query):
     response = requests.get(
         f"https://www.metaweather.com/api/location/search/?query={query}"
     ).json()
-    if len(response) != 0:
+    if len(response) != 0 :
         return (response[0])
-    else:
+    else :
         return None
 
 
