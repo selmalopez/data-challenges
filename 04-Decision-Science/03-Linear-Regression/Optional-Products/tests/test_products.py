@@ -3,7 +3,7 @@ from nbresult import ChallengeResultTestCase
 
 class TestProducts(ChallengeResultTestCase):
     def test_shape(self):
-        self.assertEqual(self.result.shape, (71, 15))
+        self.assertEqual(self.result.shape, (71, 16))
 
     def test_average_review_score(self):
         self.assertEqual(self.result.avg_review_score, 4)
