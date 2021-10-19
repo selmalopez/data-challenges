@@ -17,14 +17,18 @@ Everything is explained in the [Merge, join and concatenate](https://pandas.pyda
 
 Before we load actual CSVs and try to merge/join/concatenate them, we are going to work with Dataframes created from dictionaries. This will limit the amount of data we manipulate and will make the concepts easier to understand.
 
-Open the `Exercise.ipynb` notebook in this exercise folder and start with the usual following `import` as the first cell:
+Open the `multiple_files.ipynb` notebook in this exercise folder and start with the usual following `import` as the first cell:
 
 ```python
 import numpy as np
 import pandas as pd
 import matplotlib
 ```
+Insert a new **markdown** cell in your notebook:
 
+```markdown
+## Merge Practice
+```
 Then let's create a first DataFrame storing information about Countries picked up on Google:
 
 ```python
@@ -47,52 +51,78 @@ b_df
 ```
 
 ### Inner Merge
+Insert a new **markdown** cell in your notebook:
 
-Try to [**`merge`**](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html) `a_df` and `b_df`. Read the documentation for the function, especially about the `on` parameter. Which option should it be? Just pass this argument, and no others, what can you say about Canada? Finland?
-
-<details><summary markdown='span'>View solution
-</summary>
-
-We are merging on the **Country** column! Here's the code to do it:
-
-```python
-inner_merged_df = a_df.merge(b_df, on='Country')
-inner_merged_df
+```markdown
+### Inner Merge Practice
 ```
 
-We just performed an **inner** merge, meaning that we **only** kept the rows for which, for each value of the `Column` row, there is a row in both `a_df` and `b_df`.
+Try to [**`merge`**](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html) `a_df` and `b_df` resulting in a dataframe that has no `null` values. Assign the merged dataframe to a variable called `inner_merged_df`.  Read the documentation for the function, especially about the `on` parameter. Which option should it be? Just pass this argument, and no others, what can you say about Canada? Finland?
+
+### Test your code
+
+Add a new **markdown** cell:
+
+```markdown
+#### Check your code
+```
+
+and then a code cell to test your new dataframe:
+
+```python
+from nbresult import ChallengeResult
+
+result = ChallengeResult('inner_merge',
+    inner_merged_shape=inner_merged_df.shape,
+    inner_merged_nulls=sum(inner_merged_df.isnull().sum())
+)
+result.write()
+
+print(result.check())
+```
+
+We just performed an **inner** merge, meaning that we **only** kept the rows that had a value in the `Column` we merged on that exists in both`a_df` and `b_df`.
 
 ![](https://res.cloudinary.com/wagon/image/upload/v1562058697/inner_ugz2wa.png)
 
 In our example, the `a_df` has a line about `Finland` but `b_df` does not, so this row is not included in the inner merge. Same thing for `Canada`, it's present in `b_df` but not in `a_df` so it's not present in the inner merge.
 
-This line of code is equivalent to:
 
-```python
-a_df.merge(b_df, on='Country', how='inner')
-```
-
-</details>
-
-### Left Merge
+#### Left Merge
 
 There are four possible merges, the previous section covered the _inner_ merge. Let's try to do the **left** merge:
 
 ![](https://res.cloudinary.com/wagon/image/upload/v1562058697/left_jrs58n.png)
 
-Create a new cell and build the `left_merged_df` variable. What do you see? What about `Finland`? `Canada`?
+Insert a new **markdown** cell in your notebook:
 
-<details><summary markdown='span'>View solution
-</summary>
-
-```python
-left_merged_df = a_df.merge(b_df, on='Country', how='left')
-left_merged_df
+```markdown
+### Left Merge Practice
 ```
 
-We can see in the `left_merged_df` that **all the rows from `a_df`** have been preserved, whether or not the country was present in the `b_df`. That's why the HDI for `Finland` is [`NaN`](https://docs.scipy.org/doc/numpy/user/misc.html). The country `Canada` which is **not** in the `a_df` gets ignored.
+Create a new cell and build the `left_merged_df` variable where `a_df` is treated as the "left" dataset. What do you see? What about `Finland`? `Canada`?
 
-</details>
+### Test your code
+
+Add a new **markdown** cell:
+
+```markdown
+#### Check your code
+```
+
+and then a code cell to test your new dataframe:
+
+```python
+from nbresult import ChallengeResult
+
+result = ChallengeResult('left_merge',
+    left_merged_shape=left_merged_df.shape,
+    left_merged_nulls=sum(left_merged_df.isnull().sum())
+)
+result.write()
+
+print(result.check())
+```
 
 ### Right Merge
 
@@ -100,19 +130,36 @@ You probably get where we are going now. We just did a _left_ merge, so now let'
 
 ![](https://res.cloudinary.com/wagon/image/upload/v1562058696/right_lm5ivj.png)
 
-Same idea, create a new cell and build the `right_merged_df` variable. What do you see? What about `Finland`? `Canada`?
+Insert a new **markdown** cell in your notebook:
 
-<details><summary markdown='span'>View solution
-</summary>
-
-```python
-right_merged_df = a_df.merge(b_df, on='Country', how='right')
-right_merged_df
+```markdown
+### Right Merge Practice
 ```
 
-This time, as it's a **right** merge, all the `b_df` rows are kept, regardless of the data found in `b_df`. That's why we can find a column for `Canada` with the HDI specified, but no population and no Capital!
+Same idea, create a new cell and build the `right_merged_df` variable still treating `a_df` as your "left" dataset. What do you see? What about `Finland`? `Canada`?
 
-</details>
+### Test your code
+
+Add a new **markdown** cell:
+
+```markdown
+#### Check your code
+```
+
+and then a code cell to test your new dataframe:
+
+```python
+from nbresult import ChallengeResult
+
+result = ChallengeResult('right_merge',
+    right_merged_shape=right_merged_df.shape,
+    right_merged_nulls=sum(right_merged_df.isnull().sum())
+)
+result.write()
+
+print(result.check())
+```
+
 
 ### Outer Merge
 
@@ -120,17 +167,34 @@ Finally, there is a merge which will keep **all** the rows from both `a_df` and 
 
 ![](https://res.cloudinary.com/wagon/image/upload/v1562058696/outer_q76gh9.png)
 
-Add a new cell and test it:
+Insert a new **markdown** cell in your notebook:
 
-```python
-outer_merged_df = a_df.merge(b_df, on='Country', how='outer')
-outer_merged_df
+```markdown
+### Outer Merge Practice
 ```
 
-You can see that we have 5 rows, and `Finland` and `Canada` are both present! `NaN` is used when there is missing data for a column not found. Like for the Titanic dataset, you can quickly have an overview of how "full" each column is:
+Then create a new cell and build the `outer_merged_df`.
+
+### Test your code
+
+Add a new **markdown** cell:
+
+```markdown
+#### Check your code
+```
+
+and then a code cell to test your new dataframe:
 
 ```python
-outer_merged_df.info()
+from nbresult import ChallengeResult
+
+result = ChallengeResult('outer_merge',
+    outer_merged_shape=outer_merged_df.shape,
+    outer_merged_nulls=sum(outer_merged_df.isnull().sum())
+)
+result.write()
+
+print(result.check())
 ```
 
 :information_source: Pandas has a whole article in the documentation about [Working with missing data](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html). Again it's a pretty long article that you don't need to read now, but keep it in mind next time you are exploring a Dataset with a lot of `NaN`.
@@ -139,7 +203,15 @@ outer_merged_df.info()
 
 ### Join
 
-The `merge` function was useful to merge based on a given **column**. We will now see another use case where you want to merge based on the **index** (the rows). First, let's create two new dataframes `aa_df` and `bb_df`.
+The `merge` function was useful to merge based on a given **column**. We will now see another use case where you want to merge based on the **index** (the rows).
+
+Insert a new **markdown** cell in your notebook:
+
+```markdown
+## Join Practice
+```
+
+Next, let's create two new dataframes `aa_df` and `bb_df`, updating our `Country` column to be the new index.
 
 ```python
 aa_df = a_df.set_index("Country")
@@ -187,6 +259,12 @@ You can use `.merge()` when you want to merge based on a given **column** and `.
 
 There's a third way to put two dataframes together, using [`pandas.concat()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html). Let's jump right into it:
 
+Insert a new **markdown** cell in your notebook:
+
+```markdown
+## Concat Practice
+```
+
 ```python
 concat_df = pd.concat([a_df, b_df], axis="index", sort=False)
 concat_df
@@ -198,7 +276,7 @@ This method is a bit more "dumb", it just combines the two dataframes into one b
 
 ## Loading data from multiple CSVs
 
-To practice loading multiple CSVs and merging them, we're going to use the [Olympic Sports and Medals, 1896-2014](https://www.kaggle.com/the-guardian/olympic-games) which contains 3 files:
+Let's put our new skills to the test.  To practice loading multiple CSVs and merging them, we're going to use the [Olympic Sports and Medals, 1896-2014](https://www.kaggle.com/the-guardian/olympic-games) which contains 3 files:
 
 - `dictionary.csv`
 - `summer.csv`
@@ -206,108 +284,80 @@ To practice loading multiple CSVs and merging them, we're going to use the [Olym
 
 Note, that the files are located in the _same folder_ as the notebook you are working on.
 
-Go ahead and write the code to load `dictionary.csv` into the DataFrame `countries_df`:
+Let's continue to keep our work clean and insert a new **markdown** cell in your notebook:
 
-<details><summary markdown='span'>View solution
-</summary>
-
-```python
-countries_df = pd.read_csv('dictionary.csv')
-countries_df.head()
+```markdown
+## Olympic Sports and Medals, 1896-2014
 ```
 
-</details>
+Go ahead and write the code to load:
+- `dictionary.csv` into a dataframe called `countries_df`
+- `summer.csv` into a dataframe called `summer_df`
+- `winter.csv` into a dataframe called `winter_df`
+
+On which column should we merge `countries_df`, `summer_df`, and `winter_df`?
 
 
-Now load the CSV of **Summer** Games in a `summer_df` dataframe. On which column should we merge `countries_df` and `summer_df`? Do they have the same name? If not, use the [`pandas.DataFrame.rename()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html) function.
-
-<details><summary markdown='span'>View solution
+<details><summary markdown='span'>Hint
 </summary>
 
-```python
-summer_df = pd.read_csv('summer.csv')
-summer_df.rename(columns={"Country": "Code"}, inplace=True)
-summer_df.head()
-```
-
-</details>
-
-Do the same for **Winter** Games in a `winter_df` dataframe.
-
-<details><summary markdown='span'>View solution
-</summary>
-
-```python
-winter_df = pd.read_csv('winter.csv')
-winter_df.rename(columns={"Country": "Code"}, inplace=True)
-winter_df.head()
-```
+You will have to use [`pandas.DataFrame.rename()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rename.html) function on your winter and summer dataframes.
 
 </details>
 
 ### Merging the data
 
-Time to perform a merge of `countries_df` and `summer_df` (into a new DataFrame `summer_countries_df`). As we'll want to merge all games into one DataFrame at the end, **add a `Season`** column to the `summer_countries_df`.
+insert a new **markdown** cell in your notebook:
 
-<details><summary markdown='span'>View solution
-</summary>
-
-```python
-summer_countries_df = summer_df.merge(countries_df, on="Code")
-summer_countries_df["Season"] = "Summer"
-summer_countries_df.head()
+```markdown
+### Combining The Data
 ```
 
-</details>
+Time to perform a merge of `countries_df` and `summer_df` (into a new dataframe `summer_countries_df`). As we'll want to merge all games into one DataFrame at the end, **add a `Season`** column to the `summer_countries_df`.
 
-Repeat the same approach to create a `winter_countries_df`.
+Repeat the same approach to create a `winter_countries_df`, be sure to **add a `Season`** column.
 
-<details><summary markdown='span'>View solution
-</summary>
+Now we can concatenate `summer_countries_df` and `winter_countries_df` (they have the same columns!) into an `all_df` DataFrame.
 
-```python
-winter_countries_df = winter_df.merge(countries_df, on="Code")
-winter_countries_df["Season"] = "Winter"
-winter_countries_df.head()
+### Test your code
+
+Add a new **markdown** cell:
+
+```markdown
+#### Check your code
 ```
 
-</details>
-
-Concatenate `summer_countries_df` and `winter_countries_df` (they have the same columns!) into an `all_df` DataFrame.
-
-
-<details><summary markdown='span'>View solution
-</summary>
+and then a code cell to test your new dataframe:
 
 ```python
-all_df = pd.concat([summer_countries_df, winter_countries_df], sort=False)
-all_df.head()
-```
+from nbresult import ChallengeResult
 
-</details>
+result = ChallengeResult('all_df',
+    all_df_shape=all_df.shape,
+    all_df_columns=set(all_df.columns)
+)
+result.write()
+
+print(result.check())
+```
 
 ### Top 10 Countries since 1984
 
-Use boolean indexing, grouping & sorting to create a new dataframe consisting of the Top 10 countries who won the most medals _since 1984_. Save it in the `top_10_df` variable. Then plot it. Go step by step!
+insert a new **markdown** cell in your notebook:
 
-<details><summary markdown='span'>View solution
-</summary>
-
-```python
-all_count_df = all_df[all_df["Year"] >= 1984] \
-    .groupby(["Country"]) \
-    .count()[["Medal"]] \
-    .sort_values(by="Medal", ascending=False)
-top_10_df = all_count_df.head(10)
+```markdown
+### Top Countries Analysis
 ```
+
+Use boolean indexing, grouping & sorting to create a new dataframe consisting of the Top 10 countries who won the most **total** medals _since 1984_.
+- Save it in a variable named `top_10_df`
+- The dataframe should consist of ten rows and one column named `Medal Count`
 
 To plot the result with a barchart you can do:
 
 ```python
-top_10_df.plot(kind="bar")
+top_10_df.plot(kind="bar");
 ```
-
-</details>
 
 
 ### Test your code
@@ -315,63 +365,143 @@ top_10_df.plot(kind="bar")
 Add a new **markdown** cell:
 
 ```markdown
-### Check your code
+#### Check your code
 ```
 
-and then the code to persist your variables:
+and then the code to test your dataframe:
 
 ```python
 from nbresult import ChallengeResult
 
 result = ChallengeResult('olympic_games',
-    summer_countries_shape=summer_countries_df.shape,
-    all_countries_shape=all_df.shape,
-    top_country_1=top_10_df.iloc[0]['Medal'],
-    top_country_10=top_10_df.iloc[9]['Medal'],
+    top_country_1=top_10_df.iloc[0]['Medal Count'],
+    top_country_10=top_10_df.iloc[9]['Medal Count']
 )
 result.write()
-```
 
-You can now check the correctness of your code with:
-
-```python
 print(result.check())
 ```
 
 
-### Optional - Top 10 Countries (by Season) since 1984
+### Top 10 Countries (by Season) since 1984
 
-Let's reuse `all_df` to group but this time we don't just want to count the total number of medals for each country, we want to count the number of medals for Winter Games on the one hand, and for Summer Games on the other hand. Then we want to plot them (sorting should still be based on the _total_ number of medals).
+Let's take the analysis one step further, this time we don't just want to count the total number of medals for each country, we want to count the number of medals for Winter Games on the one hand, and for Summer Games on the other hand. Then we want to plot them (sorting should still be based on the _total_ number of medals).
+
+- The dataframe should be saved as a variable called `top_10_season_df`
+- The dataframe should have 10 rows and 3 columns named `Summer` `Winter` `Total`
 
 :bulb: **Hint 1** The [`pandas.DataFrame.groupby()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html) can group over a **`list`** of columns.
 
 :bulb: **Hint 2** You need to use the [`pandas.DataFrame.unstack()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.unstack.html) function
 
-
-<details><summary markdown='span'>View solution
-</summary>
-
-Let's build the Top 10 with two columns: Winter & Summer
+To plot the result with a barchart you can do:
 
 ```python
-season_count_df = all_df[all_df["Year"] >= 1984].groupby(["Country", "Season"])["Medal"].count().unstack()
-season_count_df.fillna(0, inplace=True)
-season_count_df["Summer"] = season_count_df["Summer"].astype(int)
-season_count_df["Winter"] = season_count_df["Winter"].astype(int)
-season_count_df.head(10)
+top_10_season_df[['Summer', 'Winter']].plot(kind="bar");
 ```
 
-As we need to sort the season_count_df based on the **Total** number of medals, we need to add a third column to `season_count_df` like this:
+### Test your code
+
+Add a new **markdown** cell:
+
+```markdown
+#### Check your code
+```
+
+and then the code to test your dataframe:
 
 ```python
-season_count_df["Total"] = all_count_df
-season_count_df.head(10)
+from nbresult import ChallengeResult
+
+result = ChallengeResult('olympic_games_season',
+    top_country_season_shape=top_10_season_df.shape,
+    top_country_1_summer=top_10_season_df.iloc[0]['Summer'],
+    top_country_10_winter=top_10_season_df.iloc[9]['Winter']
+)
+result.write()
+
+print(result.check())
 ```
 
-And now we are ready to plot!
+
+### Optional - Top 10 Countries event wins since 1984
+
+If you are a big fan of the olymics you may have noticed that the medal counts don't look quite right.  Add a new cell into your notebooks and run the following:
 
 ```python
-season_count_df.sort_values(by="Total", ascending=False)[["Summer", "Winter"]].head(10).plot(kind="bar")
+all_df[(all_df.Year==2008) & (all_df.Event=='Basketball') & (all_df.Medal=='Gold')]
 ```
 
-</details>
+It looks like team sports are being overcounted in our analysis.  How can we remove the additional rows for team sports?
+
+Create a new dataframe showing the top ten countries by total **event** wins _since 1984_.
+
+- assign the new dataframe to a variable named `top_10_events_df`
+- The dataframe should have 10 rows and 1 column called `Event Count`
+
+:bulb: **Hint 1** The [`pandas.DataFrame.drop()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html) can help us remove columns that are too specific for our analysis.
+
+:bulb: **Hint 2** With a more generalized dataset we can get help from the [`pandas.DataFrame.drop_duplicates()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html) function
+
+Once complete view your results with:
+
+```python
+top_10_events_df.plot(kind='bar');
+```
+
+### Test your code
+
+Add a new **markdown** cell:
+
+```markdown
+#### Check your code
+```
+
+and then the code to test your dataframe:
+
+```python
+from nbresult import ChallengeResult
+
+result = ChallengeResult('olympic_games_event',
+    top_country_event_shape=top_10_events_df.shape,
+    top_country_1_event=top_10_events_df.iloc[0]['Event Count'],
+    top_country_10_event=top_10_events_df.iloc[9]['Event Count']
+)
+result.write()
+
+print(result.check())
+```
+
+### Optional - Merged results
+
+Combine the `top_10_events_df` and `top_10_df` into a new dataframe named `top_10_combined`.  Combine them in a way which will include all countries that rank in **either** the top 10 for medal wins or top 10 for event wins, sort the dataframe by total `Medal Count`.
+
+Plot your findings
+```python
+top_10_combined.plot(kind='bar');
+```
+
+### Test your code
+
+Add a new **markdown** cell:
+
+```markdown
+#### Check your code
+```
+
+and then the code to test your dataframe:
+
+```python
+from nbresult import ChallengeResult
+
+result = ChallengeResult('olympic_games_combined',
+    top_combined_shape=top_10_combined.shape,
+    top_combined_1_event=top_10_combined.iloc[0]['Event Count'],
+    top_combined_1_medal=top_10_combined.iloc[0]['Medal Count'],
+    top_combined_10_event=top_10_combined.iloc[9]['Event Count'],
+    top_combined_10_medal=top_10_combined.iloc[9]['Medal Count']
+)
+result.write()
+
+print(result.check())
+```
