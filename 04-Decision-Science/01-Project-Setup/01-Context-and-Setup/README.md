@@ -35,7 +35,7 @@ Here are the seller and customer workflows:
 
 ## Dataset
 
-The dataset consists of 100k orders from 2016 and 2018 that were made on the Olist store, available as csv files on Le Wagon S3 bucket (the datesets available on Kaggle slightly different).
+The dataset consists of ~100k orders from 2016 and 2018 that were made on the Olist store, available as csv files on Le Wagon S3 bucket (❗️the datasets available on Kaggle may be slightly different).
 
 ✅ Download the 9 datasets compressed in the `olist.zip` file, unzip it and store them in your `~/code/<user.github_nickname>/data-challenges/04-Decision-Science/data/csv` folder:
 
