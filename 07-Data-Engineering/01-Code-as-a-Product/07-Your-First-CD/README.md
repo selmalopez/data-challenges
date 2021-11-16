@@ -67,7 +67,7 @@ web: pip install . -U && YOUR_PACKAGE_NAME-run
 - Create your Heroku app (change the name of your package, the name of the app must be unique worldwide and don't use underscores - it will be a part of the URL)
 -
 ```bash
-heroku create YOUR-PACKAGE-NAME
+heroku create --ssh-git YOUR-PACKAGE-NAME
 ```
 - You should see in the console that Heroku deployed a web server online exposing for you an empty app that is visible here:
 https://YOUR-PACKAGE-NAME.herokuapp.com/

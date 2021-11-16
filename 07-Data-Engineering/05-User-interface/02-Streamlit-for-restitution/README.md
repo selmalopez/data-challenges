@@ -200,7 +200,7 @@ Create an app for our website on **Heroku**... Remember the app name should be u
 💡 You might want to [change the region](https://devcenter.heroku.com/articles/regions) if you are not located inside of Europe...
 
 ```bash
-heroku create YOUR_APP_NAME --region eu
+heroku create --ssh-git YOUR_APP_NAME --region eu
 ```
 
 Remember that **Heroku** uses git in order to retrieve the files of your project to put in production.
