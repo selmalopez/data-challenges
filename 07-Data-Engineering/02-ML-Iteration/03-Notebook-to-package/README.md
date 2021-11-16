@@ -24,7 +24,7 @@ Let's create a packaged project from the code of the notebook. In order to achie
 - Install the `packgenlite` package from GitHub
 
 ``` bash
-pip install git+https://github.com/krokrob/packgenlite
+pip install git+ssh://git@github.com/krokrob/packgenlite
 ```
 
 - Create a new packaged project called `TaxiFareModel` in your *projects directory*: `~/code/<user.github_nickname>`.
