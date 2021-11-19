@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import numpy as np
 from olist.utils import haversine_distance
@@ -10,7 +9,6 @@ class Order:
     DataFrames containing all orders as index,
     and various properties of these orders as columns
     '''
-
     def __init__(self):
         # Assign an attribute ".data" to all new instances of Order
         self.data = Olist().get_data()
@@ -37,30 +35,32 @@ class Order:
         order_id, number_of_products
         """
         pass  # YOUR CODE HERE
-        
+
     def get_number_sellers(self):
         """
         Returns a DataFrame with:
         order_id, number_of_sellers
         """
         pass  # YOUR CODE HERE
-        
+
     def get_price_and_freight(self):
         """
         Returns a DataFrame with:
         order_id, price, freight_value
         """
         pass  # YOUR CODE HERE
-        
+
     # Optional
     def get_distance_seller_customer(self):
         """
-        Returns a DataFrame with order_id
-        and distance_seller_customer
+        Returns a DataFrame with:
+        order_id, distance_seller_customer
         """
         pass  # YOUR CODE HERE
 
-    def get_training_data(self, is_delivered=True, with_distance_seller_customer=False):
+    def get_training_data(self,
+                          is_delivered=True,
+                          with_distance_seller_customer=False):
         """
         Returns a clean DataFrame (without NaN), with the all following columns:
         ['order_id', 'wait_time', 'expected_wait_time', 'delay_vs_expected',
