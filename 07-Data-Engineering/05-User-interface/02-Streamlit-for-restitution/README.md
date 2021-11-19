@@ -34,7 +34,7 @@ gh repo create
 Go to the GitHub repo in order to make sure that everything is ok:
 
 ``` bash
-gh repo view --web
+gh browse
 ```
 
 The repository is empty, which is normal since we have not pushed any code yet...
