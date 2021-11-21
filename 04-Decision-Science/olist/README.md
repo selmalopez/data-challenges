@@ -19,11 +19,6 @@ from olist.data import Olist
 Main methods:
 
 - `get_data`: returns all Olist datasets as DataFrames within a Python dict.
-- `get_matching_table`: returns a DataFrame with: 
-   - `customer_id` (unique)
-   - `customer_unique_id`
-   - `order_id`
-   - `seller_id`
 
 ### Order
 
@@ -62,6 +57,7 @@ Main method:
    - `wait_time`
    - `date_first_sale`
    - `date_last_sale`
+   - `months_on_olist`
    - `share_of_one_stars`
    - `share_of_five_stars`
    - `review_score`

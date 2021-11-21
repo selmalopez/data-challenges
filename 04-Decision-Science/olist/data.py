@@ -15,13 +15,6 @@ class Olist:
             # Make extensive use of `import ipdb; ipdb.set_trace()` to investigate what `__file__` variable is really
         # Hint 2: Use os.path library to construct path independent of Mac vs. Unix vs. Windows specificities
         pass  # YOUR CODE HERE
-        
-    def get_matching_table(self):
-        """
-        This function returns a matching table between
-        columns [ "order_id", "review_id", "customer_id", "product_id", "seller_id"]
-        """
-        pass  # YOUR CODE HERE
 
     def ping(self):
         """
