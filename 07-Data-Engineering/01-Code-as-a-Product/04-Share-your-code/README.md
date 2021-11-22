@@ -109,7 +109,7 @@ git remote -v
 You can also view the repository directly on github with:
 
 ```bash
-gh repo view --web
+gh browse
 ```
 
 🤔 Doesn't look like any of our code is there yet?  We still need to push our work from the local repository on our machine up to github!
