@@ -222,7 +222,7 @@ web: sh setup.sh && streamlit run app.py
 <br>
 
 ``` bash
-heroku create <unique-app-name>
+heroku create --ssh-git <unique-app-name>
 ```
 
 </details>
