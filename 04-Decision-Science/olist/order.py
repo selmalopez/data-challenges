@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import numpy as np
 from olist.utils import haversine_distance
@@ -138,8 +137,8 @@ class Order:
     # Optional
     def get_distance_seller_customer(self):
         """
-        Returns a DataFrame with order_id
-        and distance_seller_customer
+        Returns a DataFrame with:
+        order_id, distance_seller_customer
         """
         # $CHALLENGIFY_BEGIN
 

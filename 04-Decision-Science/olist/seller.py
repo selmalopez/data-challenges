@@ -9,7 +9,6 @@ class Seller:
         # Import only data once
         olist = Olist()
         self.data = olist.get_data()
-        self.matching_table = olist.get_matching_table()
         self.order = Order()
 
     def get_seller_features(self):
