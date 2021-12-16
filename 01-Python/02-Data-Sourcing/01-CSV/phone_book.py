@@ -10,3 +10,8 @@ with open('data/phone_book.csv', mode='r') as csv_file:
             print(row[0], row[2])
 
         line_count += 1
+
+with open('data/phone_book.csv', mode='r') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+    for row in csv_reader:
+        print(f"{row['last_name']}: {row['phone_number']}")
